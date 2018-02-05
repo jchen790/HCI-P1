@@ -1,4 +1,4 @@
-div
+.section
 {
      text-align: left;
      margin: 20px 50px;
@@ -8,4 +8,9 @@ div
 {
     text-align: center;
     margin: 20px 10px;
+}
+
+p
+{
+    margin: 20px 0px;
 }
