@@ -14,3 +14,13 @@ p
 {
     margin: 20px 0px;
 }
+
+.center
+{
+    text-align: center;
+}
+
+.phrases
+{
+    display: inline-block;
+}

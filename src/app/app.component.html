@@ -25,17 +25,21 @@
   </h4>
   <!--input box and helpful phrases-->
     <app-text-box></app-text-box>
-    <div>
-      <p> 
-        Some helpful phrases:
-        <app-key-phrase-button></app-key-phrase-button>
-        <app-key-phrase-button></app-key-phrase-button>
-        <app-key-phrase-button></app-key-phrase-button>
-        <app-key-phrase-button></app-key-phrase-button>
-      </p>
+    <div class="center">
+      <div class="phrases">
+        <p> 
+          Some helpful phrases:
+          <app-key-phrase-button></app-key-phrase-button>
+          <app-key-phrase-button></app-key-phrase-button>
+          <app-key-phrase-button></app-key-phrase-button>
+          <app-key-phrase-button></app-key-phrase-button>
+        </p>
+      </div>
     </div>
   <!--translate button-->
-  <app-translate-button></app-translate-button>
+  <div class="center">
+    <app-translate-button></app-translate-button>
+  </div>
 </div>
 
 <div class="section">
@@ -45,5 +49,7 @@
   <!--input box with translation-->
   <app-text-box></app-text-box>
   <!--complete interaction button-->
-  <app-complete-button></app-complete-button>
+  <div class="center">
+    <app-complete-button></app-complete-button>
+  </div>
 </div>

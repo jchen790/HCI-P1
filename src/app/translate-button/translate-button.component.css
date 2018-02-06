@@ -8,5 +8,5 @@ label
 
 .btn-group
 {
-    margin: 0 40%;
+    display: inline-block;
 }
