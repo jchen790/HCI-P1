@@ -40,19 +40,19 @@ export class KeyPhraseButtonComponent implements OnInit {
     switch(this.phraseChoice)
     {
       case 1:
-      this.phraseClicked.emit("Go Left");
+      this.phraseClicked.emit("Go Left. ");
       break;
 
       case 2:
-      this.phraseClicked.emit("Go Right");
+      this.phraseClicked.emit("Go Right. ");
       break;
 
       case 3:
-      this.phraseClicked.emit("Go Straight");
+      this.phraseClicked.emit("Go Straight. ");
       break;
 
       case 4:
-      this.phraseClicked.emit("Stop");
+      this.phraseClicked.emit("Stop. ");
       break;
     }
   }

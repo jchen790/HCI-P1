@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { TranslateButtonComponent } from './translate-button/translate-button.component';
 
 @Component({
   selector: 'app-root',
@@ -25,11 +26,18 @@ export class AppComponent {
   newFromLang: string = "";
   newToLang: string = "";
 
+  // input box variables
+  inputText: string = "";
+  translatedText: string = "";
+  @ViewChild(TranslateButtonComponent) translateButtonComponent;
+
   addPhrase(phrase: string)
   {
     // adds phrase to translation box
+    this.inputText = this.inputText + phrase;
   }
 
+  // stores the languages being used and switches them if needed
   setFromLang(code: string)
   {
     this.fromLang = code;
@@ -48,5 +56,15 @@ export class AppComponent {
 
     this.newFromLang = this.fromLang;
     this.newToLang = this.toLang;
+  }
+
+  addTranslatedText(translatedText: string)
+  {
+    this.translatedText = translatedText;
+  }
+
+  updateText()
+  {
+    this.translateButtonComponent.text = this.inputText;
   }
 }

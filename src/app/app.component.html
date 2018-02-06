@@ -2,8 +2,8 @@
   <h1>
     {{title}}
   </h1>
-  <p> 
-    {{description}} 
+  <p>
+    {{description}}
   </p>
 </div>
 
@@ -13,9 +13,11 @@
   </h4>
   <!-- dropdown menus and switch button-->
   <p>
-    {{fromLabel}} <app-dropdown [isFrom]="true" [newLanguage]="newFromLang" (languageChosen)="setFromLang($event)"></app-dropdown>
+    {{fromLabel}}
+    <app-dropdown [isFrom]="true" [newLanguage]="newFromLang" (languageChosen)="setFromLang($event)"></app-dropdown>
     <app-switch-button (clicked)="switchLanguage()"></app-switch-button>
-    {{toLabel}} <app-dropdown [isFrom]="false" [newLanguage]="newToLang" (languageChosen)="setToLang($event)"></app-dropdown>
+    {{toLabel}}
+    <app-dropdown [isFrom]="false" [newLanguage]="newToLang" (languageChosen)="setToLang($event)"></app-dropdown>
   </p>
 </div>
 
@@ -24,21 +26,23 @@
     {{inputTitle}}
   </h4>
   <!--input box and helpful phrases-->
-    <app-text-box></app-text-box>
-    <div class="center">
-      <div class="phrases">
-        <p> 
-          {{phraseLabel}}
-          <app-key-phrase-button [phraseChoice]="1" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="2" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="3" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="4" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
-        </p>
-      </div>
+  <div class="text-box">
+    <textarea type="text" [(ngModel)]="inputText"></textarea>
+  </div>
+  <div class="center">
+    <div class="phrases">
+      <p>
+        {{phraseLabel}}
+        <app-key-phrase-button [phraseChoice]="1" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+        <app-key-phrase-button [phraseChoice]="2" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+        <app-key-phrase-button [phraseChoice]="3" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+        <app-key-phrase-button [phraseChoice]="4" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+      </p>
     </div>
+  </div>
   <!--translate button-->
   <div class="center">
-    <app-translate-button></app-translate-button>
+    <app-translate-button [toLang]="toLang" [fromLang]="fromLang" [text]="inputText" (clicked)="updateText()" (translatedText)="addTranslatedText($event)"></app-translate-button>
   </div>
 </div>
 
@@ -47,7 +51,9 @@
     {{translationTitle}}
   </h4>
   <!--input box with translation-->
-  <app-text-box></app-text-box>
+  <div class="text-box">
+    <textarea type="text">{{translatedText}}</textarea>
+  </div>
   <!--complete interaction button-->
   <div class="center">
     <app-complete-button></app-complete-button>

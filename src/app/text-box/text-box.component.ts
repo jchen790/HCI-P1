@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-text-box',
@@ -6,13 +6,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./text-box.component.css']
 })
 export class TextBoxComponent implements OnInit {
-  //@Input() phrases: string
+  @Input() phrase: string = "";
+
+  @Output() ogText = new EventEmitter<string>();
 
   inputText: string = "";
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges()
+  {
+    // add phrase to input text when button is clicked
   }
 
 }

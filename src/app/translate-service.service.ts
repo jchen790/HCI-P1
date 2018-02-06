@@ -157,9 +157,11 @@ export class TranslateService {
   //   )
   // }
 
-  translate()
+  translate(fromLang: string, toLang: string, text: string): string
   {
     // calls API to translate inputted text
+    let translatedText: string = "";
+
     this.http.post(
       'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
       {
@@ -180,9 +182,9 @@ export class TranslateService {
         console.log("Error in getting the token");
       },
       () => {
-        let params = new HttpParams().set('to', 'fr')
-        .set('text', 'Hello world, how are you today?')
-        .set('from', 'en')
+        let params = new HttpParams().set('to', toLang)
+        .set('text', text)
+        .set('from', fromLang)
         .set('appid', 'Bearer ' + this.authToken);
 
         return this.http.get(
@@ -191,11 +193,18 @@ export class TranslateService {
             params,
             'responseType': 'blob'
           }
-        ).subscribe();
+        ).subscribe(
+          res => {
+            translatedText = res.toString();
+          },
+          err => {
+            console.log("Error in translation");
+          },
+        );
       }
     );
 
-    
+    return translatedText;
   }
 
 }

@@ -40,16 +40,6 @@ export class DropdownComponent implements OnInit {
         }
       });
     }
-
-    // for(let lang in this.languages)
-    // {
-    //   if(lang.code == this.newLanguage)
-    //   {
-    //     this.dropdownText = lang.name;
-    //     this.languageChosen.emit(lang.code);
-    //     break;
-    //   }
-    // }
   }
 
 }
