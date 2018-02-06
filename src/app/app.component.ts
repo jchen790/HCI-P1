@@ -1,10 +1,12 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { TranslateButtonComponent } from './translate-button/translate-button.component';
+import { Globals } from './globals';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [Globals]
 })
 export class AppComponent {
   // page text
@@ -28,8 +30,13 @@ export class AppComponent {
 
   // input box variables
   inputText: string = "";
-  translatedText: string = "";
+  translatedText: string = Globals.TRANSLATED_TEXT;
+  static globalTranslatedText: string = Globals.TRANSLATED_TEXT;
   @ViewChild(TranslateButtonComponent) translateButtonComponent;
+
+  constructor(private globals: Globals){
+
+  }
 
   addPhrase(phrase: string)
   {
@@ -58,9 +65,14 @@ export class AppComponent {
     this.newToLang = this.toLang;
   }
 
-  addTranslatedText(translatedText: string)
+  static addTranslatedText()
   {
-    this.translatedText = translatedText;
+    AppComponent.globalTranslatedText = Globals.TRANSLATED_TEXT;
+  }
+
+  updateTranslation()
+  {
+    this.translatedText = Globals.TRANSLATED_TEXT;
   }
 
   updateText()

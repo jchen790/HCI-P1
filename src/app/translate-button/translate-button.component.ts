@@ -14,6 +14,7 @@ export class TranslateButtonComponent implements OnInit {
 
   @Output() clicked = new EventEmitter();
   @Output() translatedText = new EventEmitter<string>();
+  @Output() updateTranslation = new EventEmitter();
 
   constructor(private translateService: TranslateService) { }
 
@@ -25,7 +26,9 @@ export class TranslateButtonComponent implements OnInit {
     // get updated text from app
     this.clicked.emit();
     // translate the text
-    this.translatedText.emit(this.translateService.translate(this.fromLang, this.toLang, this.text));
+    let output: any = this.translateService.translate(this.fromLang, this.toLang, this.text);
+    let timer = Observable.timer(3000,1000);
+    timer.subscribe(t=>this.updateTranslation.emit());
   }
 
 }

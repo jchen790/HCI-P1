@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Rx';
+import { of } from 'rxjs/observable/of';
+import { AppComponent } from './app.component';
+import { Globals } from './globals'; 
 
 @Injectable()
 export class TranslateService {
@@ -76,91 +80,10 @@ export class TranslateService {
     return this.languages;
   }
 
-  // getAuthToken()
-  // {
-  //   return this.http.post(
-  //     'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
-  //     {
-  //       // no body for this call
-  //     },
-  //     {
-  //       headers:
-  //       {
-  //         'Ocp-Apim-Subscription-Key': '8e0ff3b833df4518b7987b92eb54037e'
-  //       },
-  //       'responseType': 'text'
-  //     }
-  //   ).subscribe(
-  //     (token) => {
-  //       this.authToken = token;
-  //     },
-  //     err => {
-  //       console.log("Error in getting the token");
-  //     },
-  //     () => {
-  //       this.getLanguagesForTranslate();
-  //     }
-  //   );
-  // }
-
-  // getLanguagesForTranslate()
-  // {
-  //   const httpOptions = {
-  //     params: new HttpParams().set('appid', 'Bearer ' + this.authToken),
-  //     'responseType': 'blob'
-  //   };
-
-  //   return this.http.get(
-  //     'https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate',
-  //     httpOptions
-  //   ).subscribe(
-  //     (langList) => {
-  //       this.languageCodeXml = langList;
-  //       // parse the xml to fill code list 
-  //     },
-  //     err => {
-  //       console.log("Error in getting the language codes")
-  //     },
-  //     () => {
-  //       this.getLanguageNames();
-  //     }
-  //   );
-  // }
-
-  // getLanguageNames()
-  // {
-  //   // calls API for friendly language names
-  //   let params = new HttpParams().set('locale', 'en')
-  //       .set('appid', 'Bearer ' + this.authToken);
-
-  //   return this.http.post(
-  //     'https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames',
-  //     this.languageCodeXml,
-  //     {
-  //       headers:
-  //       {
-  //         'Content-Type': 'text/plain'
-  //       },
-  //       params,
-  //       'responseType': 'blob'
-  //     }
-  //   ).subscribe(
-  //     (langList) => {
-  //       // parse it into language list
-  //     },
-  //     err => {
-  //       console.log("Error in getting the language names")
-  //     },
-  //     () => {
-  //       // something
-  //     }
-  //   )
-  // }
-
-  translate(fromLang: string, toLang: string, text: string): string
+  translate(fromLang: string, toLang: string, text: string)
   {
     // calls API to translate inputted text
-    let translatedText: string = "";
+    // let translatedText: string = "";
 
     this.http.post(
       'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
@@ -177,34 +100,33 @@ export class TranslateService {
     ).subscribe(
       (token) => {
         this.authToken = token;
-      },
-      err => {
-        console.log("Error in getting the token");
-      },
-      () => {
         let params = new HttpParams().set('to', toLang)
-        .set('text', text)
-        .set('from', fromLang)
-        .set('appid', 'Bearer ' + this.authToken);
+              .set('text', text)
+              .set('from', fromLang)
+              .set('appid', 'Bearer ' + this.authToken);
 
         return this.http.get(
           'https://api.microsofttranslator.com/V2/Http.svc/Translate',
           {
             params,
-            'responseType': 'blob'
+            'responseType': 'text'
           }
         ).subscribe(
           res => {
-            translatedText = res.toString();
+            Globals.TRANSLATED_TEXT = res.toString();
+            AppComponent.addTranslatedText();
           },
           err => {
             console.log("Error in translation");
           },
         );
+      },
+      err => {
+        console.log("Error in getting the token");
+      },
+      () => {
       }
     );
-
-    return translatedText;
   }
 
 }

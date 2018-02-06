@@ -14,6 +14,7 @@ import { CompleteButtonComponent } from './complete-button/complete-button.compo
 
 import { TranslateService } from './translate-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Globals } from './globals';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule
   ],
   providers: [
-    TranslateService
+    TranslateService,
+    Globals
   ],
   bootstrap: [AppComponent]
 })

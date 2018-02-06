@@ -42,7 +42,7 @@
   </div>
   <!--translate button-->
   <div class="center">
-    <app-translate-button [toLang]="toLang" [fromLang]="fromLang" [text]="inputText" (clicked)="updateText()" (translatedText)="addTranslatedText($event)"></app-translate-button>
+    <app-translate-button [toLang]="toLang" [fromLang]="fromLang" [text]="inputText" (clicked)="updateText()" (translatedText)="addTranslatedText($event)" (updateTranslation)="updateTranslation()"></app-translate-button>
   </div>
 </div>
 
@@ -52,7 +52,7 @@
   </h4>
   <!--input box with translation-->
   <div class="text-box">
-    <textarea type="text">{{translatedText}}</textarea>
+    <textarea type="text" [(ngModel)]="translatedText"></textarea>
   </div>
   <!--complete interaction button-->
   <div class="center">
