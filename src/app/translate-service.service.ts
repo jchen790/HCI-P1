@@ -80,11 +80,10 @@ export class TranslateService {
     return this.languages;
   }
 
+  // calls API to translate the inputted text
   translate(fromLang: string, toLang: string, text: string)
   {
-    // calls API to translate inputted text
-    // let translatedText: string = "";
-
+    // gets the AuthN token
     this.http.post(
       'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
       {
@@ -105,6 +104,7 @@ export class TranslateService {
               .set('from', fromLang)
               .set('appid', 'Bearer ' + this.authToken);
 
+        // gets the translated text
         return this.http.get(
           'https://api.microsofttranslator.com/V2/Http.svc/Translate',
           {
@@ -127,5 +127,4 @@ export class TranslateService {
       }
     );
   }
-
 }

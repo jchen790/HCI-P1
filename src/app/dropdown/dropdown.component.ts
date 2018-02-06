@@ -19,17 +19,20 @@ export class DropdownComponent implements OnInit {
   constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
+    // getting the list of languages
     this.languages = this.translateService.getLanguages();
   }
 
   selectLanguage(language: any)
   {
+    // selects the language for the dropdown, sets this language in the other components
     this.languageChosen.emit(language.code);
     this.dropdownText = language.name;
   }
 
   ngOnChanges()
   {
+    // updates the dropdowns if the switch button is clicked
     if(this.languages)
     {
       this.languages.forEach( (lang) => {

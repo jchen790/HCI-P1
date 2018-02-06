@@ -23,9 +23,10 @@ export class TranslateButtonComponent implements OnInit {
 
   onClick()
   {
-    // get updated text from app
+    // get updated text from main component
     this.clicked.emit();
-    // translate the text
+
+    // translate the text and send the translated text back to the main component
     this.translateService.translate(this.fromLang, this.toLang, this.text);
     let waitTime = Observable.timer(3000,1000);
     waitTime.subscribe( x => this.updateTranslation.emit() );

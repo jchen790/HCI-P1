@@ -1,3 +1,4 @@
+<!-- the title section, just a brief description of what this is -->
 <div class="title">
   <h1>
     {{title}}
@@ -7,6 +8,7 @@
   </p>
 </div>
 
+<!-- this section lets the users choose what languages they are translating between -->
 <div class="section">
   <h4>
     {{languagesTitle}}
@@ -21,11 +23,12 @@
   </p>
 </div>
 
+<!-- this section is the input text that will be translated -->
 <div class="section">
   <h4>
     {{inputTitle}}
   </h4>
-  <!--input box and helpful phrases-->
+  <!--input box and helpful phrases buttons-->
   <div class="text-box">
     <textarea type="text" [(ngModel)]="inputText"></textarea>
   </div>
@@ -46,6 +49,7 @@
   </div>
 </div>
 
+<!-- this section is the translated text section, editable in case the users want to change anything -->
 <div class="section">
   <h4>
     {{translationTitle}}

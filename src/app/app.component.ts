@@ -64,6 +64,7 @@ export class AppComponent {
     this.newToLang = this.toLang;
   }
 
+  // parses the translated string and updates the relevant section
   updateTranslation()
   {
     // parse the string
@@ -71,14 +72,9 @@ export class AppComponent {
     let i1: number = temp.indexOf('>');
     let i2: number = temp.lastIndexOf("<");
     this.translatedText = temp.slice(i1+1, i2-temp.length);
-
-    // var str = "<string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Hi how are you?</string>"; 
-    // var splitted = str.split(" ", 3); 
-    // console.log(splitted)
-
-    // this.translatedText = Globals.TRANSLATED_TEXT;
   }
 
+  // updates the translate button component's fields
   updateText()
   {
     this.translateButtonComponent.text = this.inputText;

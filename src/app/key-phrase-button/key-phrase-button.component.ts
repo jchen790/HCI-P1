@@ -15,6 +15,7 @@ export class KeyPhraseButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // switch which phrase is displayed depending on the input
     switch(this.phraseChoice)
     {
       case 1:
@@ -37,6 +38,7 @@ export class KeyPhraseButtonComponent implements OnInit {
 
   onClick()
   {
+    // send the phrase to be added to the input text 
     switch(this.phraseChoice)
     {
       case 1:
