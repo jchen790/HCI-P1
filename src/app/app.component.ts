@@ -31,7 +31,6 @@ export class AppComponent {
   // input box variables
   inputText: string = "";
   translatedText: string = Globals.TRANSLATED_TEXT;
-  static globalTranslatedText: string = Globals.TRANSLATED_TEXT;
   @ViewChild(TranslateButtonComponent) translateButtonComponent;
 
   constructor(private globals: Globals){
@@ -65,14 +64,19 @@ export class AppComponent {
     this.newToLang = this.toLang;
   }
 
-  static addTranslatedText()
-  {
-    AppComponent.globalTranslatedText = Globals.TRANSLATED_TEXT;
-  }
-
   updateTranslation()
   {
-    this.translatedText = Globals.TRANSLATED_TEXT;
+    // parse the string
+    let temp = Globals.TRANSLATED_TEXT;
+    let i1: number = temp.indexOf('>');
+    let i2: number = temp.lastIndexOf("<");
+    this.translatedText = temp.slice(i1+1, i2-temp.length);
+
+    // var str = "<string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Hi how are you?</string>"; 
+    // var splitted = str.split(" ", 3); 
+    // console.log(splitted)
+
+    // this.translatedText = Globals.TRANSLATED_TEXT;
   }
 
   updateText()

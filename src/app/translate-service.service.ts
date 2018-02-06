@@ -114,7 +114,6 @@ export class TranslateService {
         ).subscribe(
           res => {
             Globals.TRANSLATED_TEXT = res.toString();
-            AppComponent.addTranslatedText();
           },
           err => {
             console.log("Error in translation");
