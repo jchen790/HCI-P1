@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TextBoxComponent implements OnInit {
   //@Input() phrases: string
 
+  inputText: string = "";
+
   constructor() { }
 
   ngOnInit() {
