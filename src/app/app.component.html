@@ -13,9 +13,9 @@
   </h4>
   <!-- dropdown menus and switch button-->
   <p>
-    {{fromLabel}} <app-dropdown></app-dropdown>
-    <app-switch-button></app-switch-button>
-    {{toLabel}} <app-dropdown></app-dropdown>
+    {{fromLabel}} <app-dropdown [isFrom]="true" [newLanguage]="newFromLang" (languageChosen)="setFromLang($event)"></app-dropdown>
+    <app-switch-button (clicked)="switchLanguage()"></app-switch-button>
+    {{toLabel}} <app-dropdown [isFrom]="false" [newLanguage]="newToLang" (languageChosen)="setToLang($event)"></app-dropdown>
   </p>
 </div>
 

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // page text
   title: string = 'Where do I go?';
   description: string = `This simple 
     web app helps two people who don't 
@@ -18,8 +19,34 @@ export class AppComponent {
   phraseLabel: string = 'Some helpful phrases:';
   translationTitle: string = 'Your translation:';
 
+  // other variables
+  fromLang: string = "";
+  toLang: string = "";
+  newFromLang: string = "";
+  newToLang: string = "";
+
   addPhrase(phrase: string)
   {
     // adds phrase to translation box
+  }
+
+  setFromLang(code: string)
+  {
+    this.fromLang = code;
+  }
+
+  setToLang(code: string)
+  {
+    this.toLang = code;
+  }
+
+  switchLanguage()
+  {
+    let temp = this.toLang;
+    this.toLang = this.fromLang;
+    this.fromLang = temp;
+
+    this.newFromLang = this.fromLang;
+    this.newToLang = this.toLang;
   }
 }
