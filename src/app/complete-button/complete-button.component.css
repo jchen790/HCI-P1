@@ -10,3 +10,9 @@ label
 {
     display: inline-block;
 }
+
+a
+{
+    color: white;
+    text-decoration: none;
+}
