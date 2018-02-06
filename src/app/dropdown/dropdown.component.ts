@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '../translate-service.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-dropdown',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
+    this.translateService.getLanguagesForTranslate();
   }
 
 }

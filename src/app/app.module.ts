@@ -11,6 +11,9 @@ import { TextBoxComponent } from './text-box/text-box.component';
 import { KeyPhraseButtonComponent } from './key-phrase-button/key-phrase-button.component';
 import { CompleteButtonComponent } from './complete-button/complete-button.component';
 
+import { TranslateService } from './translate-service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +27,12 @@ import { CompleteButtonComponent } from './complete-button/complete-button.compo
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    TranslateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
