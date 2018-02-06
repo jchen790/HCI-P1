@@ -29,10 +29,10 @@
       <div class="phrases">
         <p> 
           Some helpful phrases:
-          <app-key-phrase-button></app-key-phrase-button>
-          <app-key-phrase-button></app-key-phrase-button>
-          <app-key-phrase-button></app-key-phrase-button>
-          <app-key-phrase-button></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="1"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="2"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="3"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="4"></app-key-phrase-button>
         </p>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
 <div class="section">
   <h4>
-    Your translation.
+    Your translation:
   </h4>
   <!--input box with translation-->
   <app-text-box></app-text-box>
