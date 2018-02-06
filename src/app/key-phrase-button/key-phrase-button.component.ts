@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-key-phrase-button',
@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class KeyPhraseButtonComponent implements OnInit {
   @Input() phraseChoice: number; 
+
+  @Output() phraseClicked = new EventEmitter<string>();
 
   phrase: string = "";
 
@@ -29,6 +31,28 @@ export class KeyPhraseButtonComponent implements OnInit {
 
       case 4:
       this.phrase = "Stop";
+      break;
+    }
+  }
+
+  onClick()
+  {
+    switch(this.phraseChoice)
+    {
+      case 1:
+      this.phraseClicked.emit("Go Left");
+      break;
+
+      case 2:
+      this.phraseClicked.emit("Go Right");
+      break;
+
+      case 3:
+      this.phraseClicked.emit("Go Straight");
+      break;
+
+      case 4:
+      this.phraseClicked.emit("Stop");
       break;
     }
   }

@@ -1,18 +1,13 @@
-label
+a
+{
+    color: white;
+    text-decoration: none;
+}
+
+button
 {
     font-weight: bold;
     font-size: 24px;
     padding: 5px 30px;
     margin: 10px;
-}
-
-.btn-group
-{
-    display: inline-block;
-}
-
-a
-{
-    color: white;
-    text-decoration: none;
 }

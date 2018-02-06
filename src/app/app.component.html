@@ -1,38 +1,38 @@
 <div class="title">
   <h1>
-    Where do I go?
+    {{title}}
   </h1>
   <p> 
-    This simple web app helps two people who don't speak the same language give each other directions. 
+    {{description}} 
   </p>
 </div>
 
 <div class="section">
   <h4>
-    Choose the languages.
+    {{languagesTitle}}
   </h4>
   <!-- dropdown menus and switch button-->
   <p>
-    From: <app-dropdown></app-dropdown>
+    {{fromLabel}} <app-dropdown></app-dropdown>
     <app-switch-button></app-switch-button>
-    To: <app-dropdown></app-dropdown>
+    {{toLabel}} <app-dropdown></app-dropdown>
   </p>
 </div>
 
 <div class="section">
   <h4>
-    What do you want to say?
+    {{inputTitle}}
   </h4>
   <!--input box and helpful phrases-->
     <app-text-box></app-text-box>
     <div class="center">
       <div class="phrases">
         <p> 
-          Some helpful phrases:
-          <app-key-phrase-button [phraseChoice]="1"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="2"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="3"></app-key-phrase-button>
-          <app-key-phrase-button [phraseChoice]="4"></app-key-phrase-button>
+          {{phraseLabel}}
+          <app-key-phrase-button [phraseChoice]="1" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="2" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="3" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
+          <app-key-phrase-button [phraseChoice]="4" (phraseClicked)="addPhrase($event)"></app-key-phrase-button>
         </p>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
 <div class="section">
   <h4>
-    Your translation:
+    {{translationTitle}}
   </h4>
   <!--input box with translation-->
   <app-text-box></app-text-box>

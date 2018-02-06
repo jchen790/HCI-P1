@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title: string = 'Where do I go?';
+  description: string = `This simple 
+    web app helps two people who don't 
+    speak the same language give each 
+    other directions.`;
+  languagesTitle: string = 'Choose the languages:';
+  inputTitle: string = 'What do you want to say?';
+  fromLabel: string = 'From: ';
+  toLabel: string = 'To: ';
+  phraseLabel: string = 'Some helpful phrases:';
+  translationTitle: string = 'Your translation:';
+
+  addPhrase(phrase: string)
+  {
+    // adds phrase to translation box
+  }
 }
